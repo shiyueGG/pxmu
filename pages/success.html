@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Pxmu.js 移动Success消息成功提示框js插件</title>
+    <link rel="stylesheet" href="../css/web.css">
+</head>
+
+<body>
+    <div class="pxmu-flex" v-cloak>
+        <div class="pxmu-web-demo">
+            <div class="pxmu-demo-title">
+                <a href="javascript:window.history.go(-1);" class="back"><img src="../image/demo-right-icon.png" alt=""></a>
+                <a href="/" class="title">Success插件示例</a>
+            </div>
+            <section class="pxmu-web-section">
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">默认样式</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak" @click="clickPxmuJsDiy()">
+                            <div class="pxmu-web-item-name">
+                                <span>默认样式</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">异步关闭</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak">
+                            <div class="pxmu-web-item-name" @click="clickPxmuJsDiy(2)">
+                                <span>不自动关闭</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak">
+                            <div class="pxmu-web-item-name" @click="clickPxmuJsDiy(3)">
+                                <span>手动关闭</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">模态</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak">
+                            <div class="pxmu-web-item-name" @click="clickPxmuJsDiy(1)">
+                                <span>页面不可滚动/不可点击</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">自定义样式</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak">
+                            <div class="pxmu-web-item-name" @click="clickPxmuJsColor()">
+                                <span>自定义颜色</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak">
+                            <div class="pxmu-web-item-name" @click="clickPxmuJsColor(2)">
+                                <span>无文字</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">自定义时长</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak">
+                            <div class="pxmu-web-item-name" @click="clickPxmuJsColor(1000)">
+                                <span>1秒后关闭</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">自定义动画</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak" v-for="item in anilist">
+                            <div class="pxmu-web-item-name" @click="clickPxmuJsAni(item.name)">
+                                <span>{{item.title}}</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/shiyueGG/pxmu@1.0.6/pxmu.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: ".pxmu-flex",
+        data: {
+            anilist: [{
+                'name': 'none',
+                'title': '无动画'
+            }, {
+                'name': 'fade',
+                'title': 'fade(默认)'
+            }, {
+                'name': 'slideup',
+                'title': 'slideup'
+            }, {
+                'name': 'slidedown',
+                'title': 'slidedown'
+            }, {
+                'name': 'slideleft',
+                'title': 'slideleft'
+            }, {
+                'name': 'slideright',
+                'title': 'slideright'
+            }, {
+                'name': 'slidedeg',
+                'title': 'slidedeg'
+            }]
+        },
+        methods: {
+            clickPxmuJsDiy(type) {
+                if (!type) {
+                    pxmu.success('获取成功');
+                    return;
+                };
+                if (type == 1) {
+                    pxmu.success({
+                        msg: '页面不可点击',
+                        inscroll: true
+                    });
+                    return;
+                }
+
+                if (type == 2) {
+                    pxmu.success({
+                        msg: '请手动关闭',
+                        close: false
+                    });
+                    return;
+                }
+
+                if (type == 3) {
+                    pxmu.closeload();
+                    return;
+                }
+            },
+            clickPxmuJsColor(t) {
+                if (t == 2) {
+                    pxmu.success();
+                    return;
+                }
+                if (t === 1000) {
+                    pxmu.success({
+                        msg: '1秒后关闭',
+                        time: t
+                    })
+                } else {
+                    pxmu.success({
+                        msg: '自定义颜色',
+                        bg: 'rgb(3 169 244 / 44%)',
+                        color: '#9e9e9e',
+                        time: t
+                    })
+                }
+            },
+            clickPxmuJsAni(name) {
+                pxmu.success({
+                    msg: '动画' + name,
+                    animation: name
+                })
+            }
+        },
+    });
+</script>
+
+</html>

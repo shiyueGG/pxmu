@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Pxmu.js 移动消息提示框js插件</title>
+    <link rel="stylesheet" href="../css/web.css">
+</head>
+
+<body>
+    <div class="pxmu-flex">
+        <div class="pxmu-web-demo">
+            <div class="pxmu-demo-title">
+                <a href="javascript:window.history.back();" class="back"><img src="../image/demo-right-icon.png"
+                        alt=""></a>
+                <a href="/" class="title">消息框js插件</a>
+            </div>
+            <section class="pxmu-web-section">
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">现已支持</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak" onclick="pxmu.toast('toast消息')">
+                            <div class="pxmu-web-item-name">
+                                <span>Toast</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak" onclick="pxmu.diaglog('Pxmu 是超轻量消息提示类插件')">
+                            <div class="pxmu-web-item-name">
+                                <span>Diaglog</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak" onclick="pxmu.loading('请稍等')">
+                            <div class="pxmu-web-item-name">
+                                <span>Loading</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak" onclick="pxmu.success('注册成功')">
+                            <div class="pxmu-web-item-name">
+                                <span>Success</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak" onclick="pxmu.fail('网络超时')">
+                            <div class="pxmu-web-item-name">
+                                <span>Fail</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak" onclick="copy('Pxmu 是超轻量消息提示类插件')">
+                            <div class="pxmu-web-item-name">
+                                <span>Copy</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/shiyueGG/pxmu@1.0.6/pxmu.min.js"></script>
+<script>
+    function copy(name) {
+        let is = pxmu.copy(name);
+        if (is.status) {
+            pxmu.toast('复制成功');
+        } else {
+            pxmu.toast('复制失败,请手动复制')
+        }
+    }
+</script>
+
+</html>

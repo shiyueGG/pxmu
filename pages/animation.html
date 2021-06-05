@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Pxmu.js 动画支持</title>
+    <link rel="stylesheet" href="../css/web.css">
+    <style>
+        .ani-demo-pxmu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 100px;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .ani-demo-pxmu div {
+            width: 120px;
+            height: 120px;
+            background: #f50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pxmu-flex" v-cloak>
+        <div class="pxmu-web-demo">
+            <div class="pxmu-demo-title">
+                <a href="javascript:window.history.go(-1);" class="back"><img src="../image/demo-right-icon.png"
+                        alt=""></a>
+                <a href="/" class="title">动画支持</a>
+            </div>
+            <section class="pxmu-web-section">
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">支持的动画</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak" v-for="(item,index) in anilist" @click="clickPxmuJs(item)">
+                            <div class="pxmu-web-item-name">
+                                <span>{{item.name}}</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ani-demo-pxmu" v-show="aniclass">
+                    <div :class="aniclass"></div>
+                </div>
+            </section>
+        </div>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/shiyueGG/pxmu@1.0.6/pxmu.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: ".pxmu-flex",
+        data: {
+            aniname: '',
+            aniclass: '',
+            anilist: [{
+                'name': 'fade',
+                'title': 'fade'
+            }, {
+                'name': 'slideup',
+                'title': 'slideup'
+            }, {
+                'name': 'slidedown',
+                'title': 'slidedown'
+            }, {
+                'name': 'slideleft',
+                'title': 'slideleft'
+            }, {
+                'name': 'slideright',
+                'title': 'slideright'
+            }, {
+                'name': 'slidedeg',
+                'title': 'slidedeg'
+            }]
+        },
+        methods: {
+            clickPxmuJs(item) {
+                vm.aniname = item.name;
+                console.log(vm.aniname);
+                vm.aniclass = 'pxmu-' + item.name + '-in';
+                setTimeout(() => {
+                    vm.aniclass = 'pxmu-' + item.name + '-out';
+                    setTimeout(() => {
+                        vm.aniclass = '';
+                    }, 500);
+                }, 2000);
+
+            },
+        },
+        mounted() {
+            // this.$nextTick(() => {
+            // })
+        }
+    });
+</script>
+
+</html>

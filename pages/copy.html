@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Pxmu.js copy函数复制js插件</title>
+    <link rel="stylesheet" href="../css/web.css">
+    <style>
+        .pxmu-web-item-bloak {
+            flex-direction: column;
+        }
+
+        .copytext {
+            font-size: 12px;
+            margin: 10px;
+            background: #eee;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pxmu-flex" v-cloak>
+        <div class="pxmu-web-demo">
+            <div class="pxmu-demo-title">
+                <a href="javascript:window.history.go(-1);" class="back"><img src="../image/demo-right-icon.png"
+                        alt=""></a>
+                <a href="/" class="title">Copy插件示例</a>
+            </div>
+            <section class="pxmu-web-section">
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">函数复制</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak" @click="clickcopy('我被复制')">
+                            <div class="pxmu-web-item-name">
+                                <span>pxmu.copy('我被复制')</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pxmu-web-tips">
+                    <span class="pxmu-web-tips-title">dom声明复制</span>
+                    <div class="pxmu-web-item-list">
+                        <div class="pxmu-web-item-bloak">
+                            <div class="pxmu-web-item-name">
+                                <span data-pxmu-copy-text="我是被复制的内容">点击标签文本</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                        </div>
+                        <div class="pxmu-web-item-bloak" @click="clickPxmuJs('.copyclass')">
+                            <div class="pxmu-web-item-name">
+                                <span>点击复制指定class内的文本</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                            <div class="copyclass copytext">我将被复制,我在class内,class类名需唯一</div>
+                        </div>
+                        <div class="pxmu-web-item-bloak" @click="clickPxmuJs('#copyid')">
+                            <div class="pxmu-web-item-name">
+                                <span>点击复制指定ID内的文本</span>
+                                <img src="../image/demo-right-icon.png">
+                            </div>
+                            <div id="copyid" class="copytext">我将被复制,我在Id内,id名需唯一</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/shiyueGG/pxmu@1.0.6/pxmu.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: ".pxmu-flex",
+        data: {
+            anilist: [{
+                'name': 'none',
+                'title': '无动画'
+            }, {
+                'name': 'fade',
+                'title': 'fade(默认)'
+            }, {
+                'name': 'slideup',
+                'title': 'slideup'
+            }, {
+                'name': 'slidedown',
+                'title': 'slidedown'
+            }, {
+                'name': 'slideleft',
+                'title': 'slideleft'
+            }, {
+                'name': 'slideright',
+                'title': 'slideright'
+            }, {
+                'name': 'slidedeg',
+                'title': 'slidedeg'
+            }]
+        },
+        methods: {
+            clickPxmuJs(els) {
+                let iscopy = pxmu.copy({
+                    el: els
+                });
+                console.log(iscopy);
+                if (iscopy.status) {
+                    pxmu.toast('复制成功');
+                } else {
+                    pxmu.toast(iscopy.msg);
+                }
+            },
+            clickcopy(name) {
+                let s = pxmu.copy(name);
+                console.log(s);
+                if (s.status) {
+                    pxmu.toast('复制成功');
+                } else {
+                    pxmu.toast(iscopy.msg);
+                }
+            },
+            clickToastAni(name) {
+                pxmu.toast({
+                    msg: 'Pxmu 动画' + name,
+                    animation: name
+                })
+            }
+        },
+    });
+</script>
+
+</html>
