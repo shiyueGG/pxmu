@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>Pxmu.js 移动Diaglog消息通知js插件</title>
     <link rel="stylesheet" href="../css/web.css">
@@ -15,7 +16,8 @@
     <div class="pxmu-flex" v-cloak>
         <div class="pxmu-web-demo">
             <div class="pxmu-demo-title">
-                <a href="javascript:window.history.go(-1);" class="back"><img src="../image/demo-right-icon.png" alt=""></a>
+                <a href="javascript:window.history.go(-1);" class="back"><img src="../image/demo-right-icon.png"
+                        alt=""></a>
                 <a href="/" class="title">Diaglog插件示例</a>
             </div>
             <section class="pxmu-web-section">
@@ -131,6 +133,7 @@
             </section>
         </div>
 </body>
+<script src="https://hm.baidu.com/hm.js?322f6b8838fa6aec140c14c4b0c76e20"></script>
 <script src="https://cdn.jsdelivr.net/gh/shiyueGG/pxmu@main/pxmu.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
 <script>
@@ -176,7 +179,7 @@
                             inscroll: type == 1 ? false : true,
                             anclose: type == 4 ? false : true,
                         }
-                    }).then(function(res) {
+                    }).then(function (res) {
                         pxmu.toast('点击了=' + res.btn);
                     });
                     return;
@@ -197,7 +200,7 @@
                             cbload: type == 2 ? false : true,
                             cbcloseall: type == 6 ? true : false
                         }
-                    }).then(function(res) {
+                    }).then(function (res) {
                         pxmu.toast('点击了=' + res.btn);
                         if (type == 6) {
                             // 手动关闭
@@ -222,7 +225,7 @@
                         content: {
                             text: t == 3 && vm.msg
                         }
-                    }).then(function(res) {
+                    }).then(function (res) {
                         pxmu.toast(res.btn == 'left' ? '点击了:左侧按钮' : '点击了:右侧按钮');
                     });
                     return;
@@ -248,12 +251,25 @@
                                 color: 'red',
                             }
                         }
-                    }).then(function(res) {
+                    }).then(function (res) {
                         pxmu.toast(res.btn == 'left' ? '点击了:左侧按钮' : '点击了:右侧按钮');
                     });
                     return;
                 }
-                if (t == 0 || t == 1 || t == 11) {
+                if (t == 0) {
+                    pxmu.diaglog({
+                        content: {
+                            text: vm.msg
+                        },
+                        congif: {
+                            btnstyle: true,
+                        }
+                    }).then(function (res) {
+                        pxmu.toast(res.btn == 'left' ? '点击了:左侧按钮' : '点击了:右侧按钮');
+                    });
+                    return;
+                }
+                if (t == 1 || t == 11) {
                     pxmu.diaglog({
                         content: {
                             text: vm.msg
@@ -265,16 +281,16 @@
                         btn: {
                             right: {
                                 text: t == 11 ? '我知道了' : '确定',
-                                bg: t == 11 && '#fff',
-                                solidcolor: t == 11 && '#fff',
-                                color: t == 11 && '#444',
+                                bg: t == 11 ? '#fff' : '#f50',
+                                solidcolor: t == 11 ? '#fff' : '#f50',
+                                color: t == 11 ? '#444' : '#fff',
                             }
                         },
                         congif: {
                             btnstyle: t == 0 && true,
                             btncount: t == 0 ? 2 : 1,
                         }
-                    }).then(function(res) {
+                    }).then(function (res) {
                         pxmu.toast(res.btn == 'left' ? '点击了:左侧按钮' : '点击了:右侧按钮');
                     });
                 } else {
@@ -293,7 +309,7 @@
                                 color: '#eee',
                             }
                         }
-                    }).then(function(res) {
+                    }).then(function (res) {
                         pxmu.toast(res.btn == 'left' ? '点击了:左侧按钮' : '点击了:右侧按钮');
                     });
                 }
@@ -306,7 +322,7 @@
                     congif: {
                         animation: name
                     }
-                }).then(function(res) {
+                }).then(function (res) {
                     pxmu.toast(res.btn == 'left' ? '点击了:左侧按钮' : '点击了:右侧按钮');
                 });
             }
