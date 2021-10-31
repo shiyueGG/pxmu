@@ -1,0 +1,29 @@
+{
+  "name": "pxmu",
+  "version": "1.1.0",
+  "description": "Pxmu 是移动端超轻量的消息提示框插件",
+  "main": "dist/npm/index.min.js",
+  "unpkg": "dist/web/pxmu.min.js",
+  "jsdelivr": "dist/web/pxmu.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://pxmu.com?f=npm",
+  "bugs": {
+    "url": "https://oct.cn/view/56",
+    "email": "zx@oct.cn"
+  },
+  "author": "十月 zx@oct.cn (https://oct.cn/)",
+  "license": "ISC",
+  "keywords": [
+    "pxmu",
+    "loading",
+    "success",
+    "fail",
+    "diaglog",
+    "alert",
+    "confirm",
+    "prompt",
+    "message"
+  ]
+}
